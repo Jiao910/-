@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>环县数字文化博物馆</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 200vh;
+      background-image: url(环县图库/背景图.jpg);
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-attachment: fixed;
+      font-style: 20px;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .content {
+      padding: 0 5px;
+    }
+
+    .title {
+      text-align: center;
+      width: 290px;
+      height: 65px;
+      line-height: 65px;
+      font-size: 16px;
+      margin: 20px auto;
+      background: url(./环县图库/文本框.png)no-repeat;
+    }
+
+    /* 导航栏部分 */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.6s;
+      padding: 40px 0px 0px 20px;
+      z-index: 100000;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    header.sticky {
+      padding: 5px 100px;
+    }
+
+    header .Logo {
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.6s;
+    }
+
+    header ul li {
+      float: right;
+      margin: 0 35px;
+    }
+
+    header ul li a {
+      display: block;
+      height: 58px;
+      padding: 0 10px;
+      line-height: 58px;
+      font-size: 22px;
+      color: #050505;
+    }
+
+    header li a:hover {
+      border-bottom: 2px solid #00a4ff;
+      color: #00a4ff;
+    }
+
+    header ul {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header ul li {
+      position: relative;
+      list-style: none;
+    }
+
+    header ul li a {
+      position: relative;
+      margin: 0 5px;
+      text-decoration: none;
+      color: #000;
+      letter-spacing: 2px;
+      font-weight: 500px;
+      transition: 0.6s;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 17vh;
+      background-size: cover;
+    }
+
+    header.sticky ul li a {
+      color: #000;
+    }
+
+    .search {
+      float: left;
+      width: 460px;
+      height: 48px;
+      margin-left: 70px;
+    }
+
+    .search input {
+      float: left;
+      width: 335px;
+      height: 35px;
+      border: 1px solid #00a4ff;
+      color: #bfbfbf;
+      font-style: 14px;
+      padding-left: 15px;
+    }
+
+    .slideshow-conatiner {
+      position: relative;
+      height: 580px;
+    }
+
+    .slideshow-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slideshow-image.active {
+      opacity: 1;
+    }
+
+    .tu {
+      width: 1200px;
+      margin: 20px auto;
+
+    }
+
+    .list {
+      cursor: pointer;
+      width: 1160;
+      height: 315px;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 20px;
+      transition: all 0.6s;
+    }
+
+    .list:hover {
+      box-shadow: 4px 6px 20px#ccc;
+    }
+
+    .list-img {
+      float: left;
+      width: 400px;
+      height: 320px;
+    }
+
+    .list-img img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .list-text {
+      float: right;
+      width: 740px;
+    }
+
+    .list-text h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .list-text p {
+      font-size: 18px;
+      color: black;
+      line-height: 1.8;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 8;
+      overflow: hidden;
+    }
+
+    /* 内容1 */
+    .shell {
+      width: 100%;
+      height: 650px;
+      display: flex;
+
+    }
+
+    .lala {
+      flex: 1;
+      overflow: hidden;
+      background-color: #ececec;
+      margin: 0 10px;
+      border: 1px #fff;
+      box-shadow: 5px 5px 10px #fff;
+      border-radius: 10px;
+      transition: all 0.5s;
+
+    }
+
+    .lala>img {
+      width: 100%;
+      height: 92%;
+      object-fit: cover;
+      transform: all 0.5s;
+    }
+
+    .lala p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .lala:hover {
+      flex-basis: 40%;
+    }
+
+    .lala span {
+      color: #666;
+    }
+
+    .lala:hover>img {
+      width: 100%;
+      height: 95%;
+    }
+
+    a {
+      color: #050505;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 头部部分开始啦~ -->
+  <header>
+    <div class="logo">
+      <img src="环县图库/logo.png" alt="">
+    </div>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="关于我们.html">关于我们</a></li>
+    </ul>
+    <div class="search">
+      <input type="text" value="输入关键词">
+      <a href="http://www.baidu.com"><button></button></a>
+
+    </div>
+  </header>
+  <section class="banner"></section>
+  <!-- 轮播图1 -->
+  <div class="slideshow-conatiner">
+    <img class="slideshow-image  active" src="环县图库/1.jpg">
+    <img class="slideshow-image" src="环县图库/2.jpg">
+    <img class="slideshow-image" src="环县图库/3.jpg">
+  </div>
+  <!-- 内容1 -->
+  <div class="content">
+    <div class="title">
+      <h1 class="H">环县非遗种类</h1>
+    </div>
+    <div class="shell">
+      <div class="lala">
+        <img src="环县图库/10.jpg" alt="">
+        <a href="种类2-香包.html">
+          <p>刺绣</p>
+        </a>
+        <span>异彩纷呈的环县刺绣，不论是心裁独到的画面设计，还是粗细有致</span>
+      </div>
+
+      <div class="lala">
+        <img src="环县图库/9.png" alt="">
+        <a href="种类2-香包.html">
+          <p>香包</p>
+        </a>
+        <span>环县民间香包源远流长。千百年来，一代又一代慧淑贤良</span>
+      </div>
+      <div class="lala">
+        <img src="环县图库/8.png" alt="_self">
+        <a href="种类1-道情皮影.html">
+          <p>道情皮影</p>
+        </a>
+        <span>庆阳皮影戏班在明、清、民国及建国后至六十年代有数百家之多</span>
+      </div>
+      <div class="lala">
+        <img src="环县图库/11.jpg" alt="">
+        <a href="种类3-剪纸.html">
+          <p>剪纸</p>
+        </a>
+        <span>环县剪纸是在农耕社会基础上产生的群众艺术，是广大妇女思维与物质观念的产物</span>
+      </div>
+      <div class="lala">
+        <img src="环县图库/12.png" alt="">
+        <a href="种类4-唢呐.html">
+          <p>唢呐</p>
+        </a>
+        <span>庆阳环县唢呐从清代开始逐步成熟，至民国达到兴盛。</span>
+      </div>
+      <div class="lala">
+        <img src="环县图库/13.png" alt="">
+        <a href="种类5-窑洞营造技艺.html">
+          <p>窑洞营造技艺</p>
+        </a>
+        <span>环县地处陇东黄土高原，窑洞稠密，鳞次栉比，形成独具特色的地方景观。</span>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- 内容2 -->
+  <div class="tu">
+    <div class="title">
+      <h1>新闻动态</h1>
+    </div>
+
+    <div class="list">
+      <!-- 左侧图片 -->
+      <div class="list-img">
+        <a href="新闻1-瑰宝生新辉.html"><img src="环县图库/4.png" alt="_self"></a>
+      </div>
+      <!-- 右侧文字 -->
+      <div class="list-text">
+        <h3>瑰宝生新辉——习近平与非遗故事</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国丰富多彩的非物质文化遗产是中华民族智慧与文明的结晶。
+          它们走过悠久的历史，并在今天与现代生活接轨，焕发出新的生机与活力。习近平对非物质文化遗产有着深厚的情结。
+          从杭州西溪国家湿地公园的炒制龙井茶，到广西柳州的螺蛳粉，再到青海加牙藏毯，习近平每次到各地考察调研，都对
+          当地富有特色的非物质文化遗产热情点赞。他指出，“要加强非物质文化遗产保护和传承，积极培养传承人，让非物质文
+          化遗产绽放出更加迷人的光彩。”</p>
+      </div>
+    </div>
+    <div class="list">
+      <!-- 左侧图片 -->
+      <div class="list-img">
+        <a href="新闻2-重要精神.html"><img src="环县图库/5.jpg" alt="_self"></a>
+      </div>
+      <!-- 右侧文字 -->
+      <div class="list-text">
+        <h3>《保护非物质文化遗产公约》重要精神</h3>
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对非遗保有主体权益的尊重是联合国教科文组织《保护非物质文化遗产公约》及其他基本文件中蕴含的重要精神。中国自加入公
+          约以来，在非遗法治建设上取得了重大成就，但也存在对非遗保有群体和代表性传承人的权益保障不够充分等问题，需要在《中
+          华人民共和国非物质文化遗产法》的修订和相关法治建设中，确立保有群体的主体地位，进一步强化代表性传承人的权益保障，
+          关注他们之间的利益平衡问题，并在保有群体和外部使用者、开发者之间建立非遗获取和惠益分享机制，以期更好地调动各方保
+          护利用非遗的积极性，实现非遗保护传承的共治共享。
+        </p>
+      </div>
+    </div>
+    <div class="list">
+      <!-- 左侧图片 -->
+      <div class="list-img">
+        <a href="新闻3-二十四节气.html"><img src="环县图库/6.png" alt="_self"></a>
+      </div>
+      <!-- 右侧文字 -->
+      <div class="list-text">
+        <h3>今天，我们该如何保护二十四节气</h3>
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“二十四节气是中华民族优秀传统文化的典型代表，浓缩了传统文明的高度
+          智慧，作为非物质文化遗产本身就是值得，也必须加以保护的。”曹幸穗说，“二十四节气是中华民族特有的文化符号，是区别于其他民族文化的重要标志之一。经济可以全球化，
+          但是文化必须是个性的，而且经济越是全球化，越要注重保护文化的个性。”保护二十四节气的过程，既是进一步培育、壮大民
+          族自信心的过程，也是进一步加强、提升与其他民族文化沟通交流的过程。通过双向互动，寻求人类文明的共通之处，让人类命运共同体的火炬更加闪亮。
+          “百里不同风，千里不同俗”，漫漫历史长河中，二十四节气形成了诸多民俗，尽管带有各自地域色彩，但是中华民族勤劳勇敢、
+          自强不息的精神一以贯之。保护二十四节气，就是保护民族精神。“二十四节气及其实践活动所代表的价值取向，是中华民族不
+          断追求美好生活的象征。”曹幸穗说。对此，淮南师范学院文学与传播学院教授应克荣呼吁，结合实际重新拾起二十四节气民俗。她将二十四节气民俗分为节日民俗、
+          生活习俗、饮食习俗三方面，节日习俗如立春时的“鞭打春牛”、大寒节气的“尾牙祭”等；生活习俗如“春分立蛋”“做夏至”等；
+          饮食习俗如“冬至饺子夏至面”等。
+        </p>
+      </div>
+    </div>
+</body>
+<!-- 轮播图2 -->
+<script>
+  function starSlideShow() {
+    var images = document.querySelectorAll(".slideshow-image");
+
+    var currentIndex = 0;
+
+    setInterval(function () {
+      images[currentIndex].classList.remove("active")
+      currentIndex = (currentIndex + 1) % images.length
+      images[currentIndex].classList.add("active")
+    }, 3000)
+  }
+  starSlideShow()
+</script>
+<!-- 导航栏 -->
+<script type="text/javascript">
+  window.addEventListener("scroll", function () {
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0)
+  })
+</script>
+
+</html>
